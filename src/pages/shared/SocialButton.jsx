@@ -1,18 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 import { useNavigate } from 'react-router';
 
-const SocialButton = () => {
-    const { google, loading } = useContext(AuthContext);
+const SocialButton = ({from}) => {
+    const { google } = useContext(AuthContext);
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
 
     const handleGoogleLogin = () => {
+        setLoading(true)
         google().then(result => {
             console.log('user signed in with google', result);
-            navigate('/');
+            setLoading(false)
+            navigate(from || '/');
         }).catch(err => {
             console.error(err.code, err.message);
         })
+        setLoading(false)
     }
     return (
         <div>

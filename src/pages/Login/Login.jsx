@@ -1,17 +1,23 @@
 import Lottie from 'lottie-react';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import loginAnimation from '../../assets/lotties/Animation - login.json';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import SocialButton from '../shared/SocialButton';
 
 const Login = () => {
 
-    const {signInUser} = useContext(AuthContext);
+    const { signInUser } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const [loading, setLoading] = useState(false);
+    // console.log(location);
+    const from = location?.state || '/';
 
     const handleLogin = e => {
         e.preventDefault();
+        setLoading(true);
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
@@ -19,10 +25,12 @@ const Login = () => {
 
         signInUser(email, password).then(result => {
             console.log('user successfully logged in', result);
-            navigate('/');
-        }).catch(err =>{
+            setLoading(false);
+            navigate(from);
+        }).catch(err => {
             console.error(err.code, err.message);
         })
+        setLoading(false);
     }
     return (
         <div className="hero bg-base-200 min-h-screen">
@@ -49,9 +57,14 @@ const Login = () => {
                                 <label className="label">Password</label>
                                 <input type="password" name='password' className="input" placeholder="Password" />
                                 <div><a className="link link-hover">Forgot password?</a></div>
-                                <button className="btn btn-neutral mt-4">Login</button>
+                                <button className="btn btn-neutral mt-4">
+                                    {
+                                        loading ? <span className="loading loading-spinner text-warning"></span>
+                                            : 'Login'
+                                    }
+                                </button>
                             </fieldset>
-                            <SocialButton/>
+                            <SocialButton from={from} />
                         </form>
                     </div>
                 </div>

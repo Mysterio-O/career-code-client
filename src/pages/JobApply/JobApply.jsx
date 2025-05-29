@@ -1,12 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaUser, FaEnvelope, FaPhone, FaLinkedin, FaGithub, FaFileAlt } from 'react-icons/fa';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
 const JobApply = () => {
+
+    const navigate = useNavigate();
 
     const { user } = useAuth();
     // console.log(user)
@@ -51,6 +53,7 @@ const JobApply = () => {
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {
+                    isNavigating(true)
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
@@ -58,11 +61,14 @@ const JobApply = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    navigate('/');
                 }
             })
             .catch(err => {
                 console.error(err);
             })
+
+        form.reset();
 
     }
 

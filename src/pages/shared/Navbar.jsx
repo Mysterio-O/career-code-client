@@ -10,6 +10,9 @@ const Navbar = () => {
     const links = <>
         <NavLink to='/'><li>Home</li></NavLink>
         <NavLink to='/clock'><li>Clock</li></NavLink>
+        {
+            user && <NavLink to='/applications'><li>My Applications</li></NavLink>
+        }
     </>
 
     const handleLogOut = () => {
@@ -37,7 +40,7 @@ const Navbar = () => {
                 <a className="btn btn-ghost text-xl">daisyUI</a>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal px-1 space-x-2">
                     {links}
                 </ul>
             </div>

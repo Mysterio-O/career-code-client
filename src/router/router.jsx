@@ -7,6 +7,7 @@ import Login from '../pages/Login/Login';
 import JobDetails from '../pages/JobDetails/JobDetails';
 import PrivateRoute from '../routes/PrivateRoute';
 import JobApply from '../pages/JobApply/JobApply';
+import Clock from '../pages/Clock/CLock';
 
 const router = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
             {
                 index: true,
                 Component: Home
+            },
+            {
+                path: '/clock',
+                Component: Clock
             },
             {
                 path: '/job/:id',

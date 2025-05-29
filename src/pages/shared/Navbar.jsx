@@ -9,6 +9,7 @@ const Navbar = () => {
 
     const links = <>
         <NavLink to='/'><li>Home</li></NavLink>
+        <NavLink to='/clock'><li>Clock</li></NavLink>
     </>
 
     const handleLogOut = () => {

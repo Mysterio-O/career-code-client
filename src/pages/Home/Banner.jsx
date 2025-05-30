@@ -7,7 +7,11 @@ const Banner = () => {
     return (
         <div className="hero bg-base-200 min-h-screen">
             <div className="hero-content flex-col lg:flex-row-reverse max-w-7xl mx-auto">
-                <div className='w-1/2'>
+                <motion.div
+                    initial={{ translateX:-200, opacity:0 }}
+                    animate={{translateX:0,opacity:100}}
+                    transition={{ duration: 3 }}
+                    className='w-1/2'>
                     <motion.img
                         animate={{ translateY: [30, 90, 30] }}
                         transition={{ duration: 6, repeat: Infinity }}
@@ -20,7 +24,7 @@ const Banner = () => {
                         src={team2}
                         className='max-w-sm rounded-t-3xl rounded-br-3xl shadow-2xl border-s-8 border-b-8 border-blue-500'
                     />
-                </div>
+                </motion.div>
                 <div className='w-1/2'>
                     <motion.h1
                         initial={{ scale: 0.3 }}
@@ -43,9 +47,9 @@ const Banner = () => {
                         quasi. In deleniti eaque aut repudiandae et a id nisi.
                     </motion.p>
                     <motion.div
-                        initial={{ opacity:0, translateY:100 }}
-                        animate={{ opacity:1, translateY:0}}
-                        transition={{duration:3}}
+                        initial={{ opacity: 0, translateY: 100 }}
+                        animate={{ opacity: 1, translateY: 0 }}
+                        transition={{ duration: 3 }}
                     >
                         <motion.button
                             // initial={{ scale: -1 }}

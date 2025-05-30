@@ -9,6 +9,7 @@ import PrivateRoute from '../routes/PrivateRoute';
 import JobApply from '../pages/JobApply/JobApply';
 import Clock from '../pages/Clock/CLock';
 import MyApplications from '../pages/MyApplications/MyApplications';
+import AddJob from '../pages/AddJob/AddJob';
 
 const router = createBrowserRouter([
     {
@@ -20,12 +21,20 @@ const router = createBrowserRouter([
                 Component: Home
             },
             {
+                path: '/addJob',
+                element: <PrivateRoute>
+                    <AddJob />
+                </PrivateRoute>
+            },
+            {
                 path: '/clock',
                 Component: Clock
             },
             {
-                path:'/applications',
-                Component:MyApplications
+                path: '/applications',
+                element: <PrivateRoute>
+                    <MyApplications />
+                </PrivateRoute>
             },
             {
                 path: '/job/:id',

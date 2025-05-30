@@ -18,7 +18,7 @@ const JobCard = ({ job }) => {
                 <div className='flex'>
                     <figure className='p-2'>
                         <img
-                            className=''
+                            className='h-24 w-24'
                             src={company_logo}
                             alt={`${company}'s photo`} />
                     </figure>

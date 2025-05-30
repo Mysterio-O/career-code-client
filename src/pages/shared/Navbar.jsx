@@ -13,6 +13,9 @@ const Navbar = () => {
         {
             user && <NavLink to='/applications'><li>My Applications</li></NavLink>
         }
+        {
+            user && <NavLink to='/addJob'><li>Add Job</li></NavLink>
+        }
     </>
 
     const handleLogOut = () => {

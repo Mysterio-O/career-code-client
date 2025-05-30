@@ -53,11 +53,10 @@ const JobApply = () => {
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {
-                    isNavigating(true)
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: "Your work has been saved",
+                        title: "Your application has been submitted",
                         showConfirmButton: false,
                         timer: 1500
                     });

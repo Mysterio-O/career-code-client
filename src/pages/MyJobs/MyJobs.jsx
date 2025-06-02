@@ -10,7 +10,7 @@ const MyJobs = () => {
     return (
         <div>
             <Suspense fallback={'loading..'}>
-                <JobLists jobsAddedBy={jobsAddedBy(user.email)}/>
+                <JobLists jobsAddedBy={jobsAddedBy(user.email, user.accessToken)}/>
             </Suspense>
         </div>
     );

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './clock.css'; // Import the CSS file for styling
+import { motion } from 'motion/react'
 
 const Clock = () => {
     const [time, setTime] = useState(new Date());
@@ -18,8 +19,13 @@ const Clock = () => {
     const hourDeg = (hours % 12) * 30 + minutes * 0.5; // 360° / 12 hours + minutes contribution
 
     return (
-        <div className="clock">
-            <div className="clock-face">
+        <div
+            className="clock">
+            <motion.div
+                initial={{ opacity: 0, translateY: -50 }}
+                animate={{ opacity: 100, translateY: 0 }}
+                transition={{ duration: 2 }}
+                className="clock-face">
                 {/* Clock markers for 12, 3, 6, 9 */}
                 <div className="marker marker-12"></div>
                 <div className="marker marker-3"></div>
@@ -30,7 +36,7 @@ const Clock = () => {
                 <div className="hand minute" style={{ transform: `rotate(${minuteDeg}deg)` }}></div>
                 <div className="hand second" style={{ transform: `rotate(${secondDeg}deg)` }}></div>
                 <div className="center-dot"></div>
-            </div>
+            </motion.div>
         </div>
     );
 };

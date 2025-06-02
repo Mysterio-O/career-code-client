@@ -3,11 +3,12 @@ import { AuthContext } from '../AuthContext/AuthContext';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { auth } from '../../firebase/firebase.init';
 import { GoogleAuthProvider } from 'firebase/auth';
+import axios from 'axios';
 
 const AuthProvider = ({ children }) => {
 
     const [loading, setLoading] = useState(true);
-    const [user, setUser]= useState(null);
+    const [user, setUser] = useState(null);
 
     const provider = new GoogleAuthProvider()
 
@@ -27,22 +28,33 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            if(currentUser) {
+            if (currentUser) {
                 setUser(currentUser);
                 setLoading(false)
-            }else {
+
+                if (currentUser) {
+                    const userData = {email: user?.email};
+                    // const userData = user?.email;
+                    axios.post('http://localhost:3000/jwt', { userData }, { withCredentials: true })
+                        .then(res => {
+                            console.log('after jwt', res.data);
+                        })
+                        .catch(err => console.log(err));
+                }
+
+            } else {
                 setUser(null);
                 setLoading(false);
             }
         })
-        return ()=> {
+        return () => {
             unSubscribe()
         }
-    }, [])
+    }, [user])
 
+    console.log(user)
 
-
-    const google = ()=> {
+    const google = () => {
         setLoading(true);
         return signInWithPopup(auth, provider)
     }

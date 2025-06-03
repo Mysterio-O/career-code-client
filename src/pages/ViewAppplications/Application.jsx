@@ -20,7 +20,7 @@ const Application = ({ application, index }) => {
 
         const status = e.target.value;
 
-        axios.patch(`http://localhost:3000/applications/${application._id}`, { status })
+        axios.patch(`https://career-code-server-gamma.vercel.app/applications/${application._id}`, { status })
             .then(res => {
                 console.log(res)
                 if (res.data.acknowledged) {

@@ -39,7 +39,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <ViewApplications />
                 </PrivateRoute>,
-                loader: ({params})=> fetch(`http://localhost:3000/applications/job/${params.job_id}`)
+                loader: ({ params }) => fetch(`https://career-code-server-gamma.vercel.app/applications/job/${params.job_id}`)
             },
             {
                 path: '/clock',
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
             {
                 path: '/job/:id',
                 Component: JobDetails,
-                loader: ({ params }) => fetch(`http://localhost:3000/job/${params.id}`)
+                loader: ({ params }) => fetch(`https://career-code-server-gamma.vercel.app/job/${params.id}`)
             },
             {
                 path: '/jobApply/:id',

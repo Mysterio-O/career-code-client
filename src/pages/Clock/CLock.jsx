@@ -22,12 +22,12 @@ const Clock = () => {
         <div
             className="clock">
             <motion.div
-                initial={{ opacity: 0, translateY: -50 }}
-                animate={{ opacity: 100, translateY: 0 }}
-                transition={{ duration: 2 }}
+                // initial={{  translateY: 0 }}
+                animate={{ translateY: [-15, 0,-15] }}
+                transition={{ duration: 4, repeat:Infinity }}
                 className="clock-face">
                 {/* Clock markers for 12, 3, 6, 9 */}
-                <div className="marker marker-12"></div>
+                <div className="marker marker marker-12"></div>
                 <div className="marker marker-3"></div>
                 <div className="marker marker-6"></div>
                 <div className="marker marker-9"></div>

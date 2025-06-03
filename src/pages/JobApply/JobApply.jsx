@@ -49,7 +49,7 @@ const JobApply = () => {
             userEmail: user?.email
         }
 
-        axios.post('http://localhost:3000/application', applicationData)
+        axios.post('https://career-code-server-gamma.vercel.app/application', applicationData)
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {

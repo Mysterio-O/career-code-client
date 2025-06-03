@@ -1,8 +1,8 @@
 export const applicationsPromise = (email, accessToken) => {
-    return fetch(`http://localhost:3000/application?email=${email}`, {
+    return fetch(`https://career-code-server-gamma.vercel.app/application?email=${email}`, {
         credentials: 'include',
-        headers:{
+        headers: {
             authorization: `Bearer ${accessToken}`
         }
-    }).then(res=> res.json())
+    }).then(res => res.json())
 }

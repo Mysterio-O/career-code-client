@@ -34,9 +34,9 @@ const AuthProvider = ({ children }) => {
 
                 // sending user email to jwt at backend to verify token (only when creating custom tokens instead of firebase token)
                 if (currentUser) {
-                    const userData = {email: user?.email};
+                    const userData = { email: user?.email };
                     // const userData = user?.email;
-                    axios.post('http://localhost:3000/jwt', { userData }, { withCredentials: true })
+                    axios.post('https://career-code-server-gamma.vercel.app/jwt', { userData }, { withCredentials: true })
                         .then(res => {
                             console.log('after jwt', res.data);
                         })

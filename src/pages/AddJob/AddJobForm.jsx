@@ -21,7 +21,7 @@ const AddJobForm = () => {
         newData.salaryRange = { min, max, currency };
         console.log(newData);
 
-        axios.post('http://localhost:3000/jobs', newData)
+        axios.post('https://career-code-server-gamma.vercel.app/jobs', newData)
             .then(res => {
                 if (res.data.acknowledged || res.data.insertedId > 0) {
                     Swal.fire({

@@ -1,7 +1,7 @@
 export const jobsAddedBy = (email, accessToken) => {
-    return fetch(`http://localhost:3000/job/applications?email=${email}`,{
+    return fetch(`https://career-code-server-gamma.vercel.app/job/applications?email=${email}`, {
         credentials: 'include',
-        headers:{
+        headers: {
             authorization: `Bearer ${accessToken}`
         }
     }).then(res => res.json())

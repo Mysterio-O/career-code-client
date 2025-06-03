@@ -11,7 +11,7 @@ const Applications = ({ applicationsPromise }) => {
     // console.log(applications)
 
     const handleDelete = id => {
-        fetch(`http://localhost:3000/application/${id}`, {
+        fetch(`https://career-code-server-gamma.vercel.app/application/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())

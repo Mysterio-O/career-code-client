@@ -1,8 +1,10 @@
 import React, { Suspense } from 'react';
 import useAuth from '../../hooks/useAuth';
 import JobLists from './JobLists'
-import { jobsAddedBy } from '../../apis/jobsApis';
+import useJobApi from '../../hooks/useJobApi';
 const MyJobs = () => {
+
+    const {jobsAddedBy} = useJobApi();
 
     const {user} = useAuth();
     console.log(user)

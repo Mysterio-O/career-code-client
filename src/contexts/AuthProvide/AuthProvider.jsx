@@ -32,6 +32,7 @@ const AuthProvider = ({ children }) => {
                 setUser(currentUser);
                 setLoading(false)
 
+                // sending user email to jwt at backend to verify token (only when creating custom tokens instead of firebase token)
                 if (currentUser) {
                     const userData = {email: user?.email};
                     // const userData = user?.email;

@@ -13,7 +13,7 @@ const Application = ({ application, index }) => {
         resume,
         _id
     } = application;
-    console.log(application)
+    // console.log(application)
 
     const handleStatusChange = (e, application) => {
         // console.log(e.target.value, application._id);

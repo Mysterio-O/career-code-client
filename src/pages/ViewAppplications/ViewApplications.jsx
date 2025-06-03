@@ -4,7 +4,7 @@ import Application from './Application';
 
 const ViewApplications = () => {
     const applications = useLoaderData();
-    console.log(applications);
+    // console.log(applications);
     return (
         <div>
 
